@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>List Categories</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/5.0.0/css/bootstrap.min.css}"/>
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+        }
+
+        body {
+            background: url("https://images.pexels.com/photos/3315286/pexels-photo-3315286.jpeg") no-repeat center center fixed;
+            background-size: cover;
+            font-family: sans-serif;
+            font-weight: 100;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .category-list {
+            background-color: #000;
+            border: 1px solid #FFF;
+            padding: 20px;
+        }
+
+        .category-list h1 {
+            color: #FFF;
+            margin-bottom: 20px;
+        }
+
+        table {
+            width: 300px;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 10px;
+            color: #000; /* Zmieniono kolor tekstu na czarny */
+            border: 1px solid #FFF;
+        }
+
+        th {
+            background-color: #000;
+            color: #FFF; /* Dodano kolor tekstu dla nagłówków */
+        }
+
+        td {
+            background-color: #FFF;
+        }
+
+        a {
+            color: #FFF;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="category-list">
+        <h1>Category List</h1>
+        <p class="create-product-link-header">
+            <a href="/">Click to Return Menu</a>
+        </p>
+        <table>
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="category : ${listCategories}">
+                <td th:text="${category.id}">ID</td>
+                <td th:text="${category.name}">Name</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+</body>
+</html>

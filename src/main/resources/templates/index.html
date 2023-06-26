@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Wardrobe Tracker</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/5.0.0/css/bootstrap.min.css}"/>
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+            background: url('https://images.pexels.com/photos/3315286/pexels-photo-3315286.jpeg') no-repeat center center fixed;
+            background-size: cover;
+            font-family: sans-serif;
+            font-weight: 100;
+            padding-top: 60px;
+        }
+
+        .container {
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        h1 {
+            color: #000000;
+        }
+    </style>
+</head>
+<body>
+<div class="container text-center">
+    <div><h1>Wardrobe Tracker</h1></div>
+    <div class="p-2">
+        <a class="h2" th:href="@{/categories}">List Categories</a>
+    </div>
+    <div class="p-2">
+        <a class="h2" th:href="@{/categories/new}">Create Categories</a>
+    </div>
+    <div class="p-2">
+        <a class="h2" th:href="@{/products}">List Products</a>
+    </div>
+    <div class="p-2">
+        <a class="h2" th:href="@{/products/new}">Create Product</a>
+    </div>
+    <div class="p-2">
+        <a class="h2" th:href="@{/brands}">List Brands</a>
+    </div>
+    <div class="p-2">
+        <a class="h2" th:href="@{/brands/new}">Create Brand</a>
+    </div>
+</div>
+</body>
+</html>

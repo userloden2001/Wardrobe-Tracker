@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Product Categories</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/5.0.0/css/bootstrap.min.css}"/>
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+        }
+
+        body {
+            background-image: url('https://images.pexels.com/photos/3315286/pexels-photo-3315286.jpeg');
+            background-size: cover;
+            font-family: sans-serif;
+            font-weight: 100;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .product-list {
+            background-color: rgba(0, 0, 0, 0.8);
+            padding: 20px;
+            border: 2px solid #000;
+            border-radius: 10px;
+        }
+
+        .product-list h1 {
+            color: #ffffff;
+            margin-bottom: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 10px;
+            color: #000;
+            text-align: center;
+            border: 1px dashed #000;
+        }
+
+        th {
+            background-color: #000;
+            color: #FFF;
+        }
+
+        td {
+            background-color: #FFF;
+        }
+
+        a {
+            color: #ffffff;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+        /* Dodajemy nowe style dla linków Edit i Delete */
+        td.actions a {
+            display: none; /* Ukrywamy linki początkowo */
+            color: #ffffff;
+            text-decoration: none;
+        }
+
+        td.actions:hover a {
+            display: inline-block; /* Pokazujemy linki po najechaniu myszką */
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="product-list">
+        <h1>Product List</h1>
+        <p class="create-product-link-header">
+            <a href="/">Click to Return Menu</a>
+        </p>
+        <table>
+            <thead class="thead-dark">
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Category</th>
+                <th>Details</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="product : ${listProducts}">
+                <td th:text="${product.id}">ID</td>
+                <td th:text="${product.name}">Name</td>
+                <td th:text="${product.price}">Price</td>
+                <td th:text="${product.category.name}">Category</td>
+                <td th:text="${product.details}">Details</td>
+                <td>
+                    <a th:href="@{'/products/edit/' + ${product.id}}">Edit</a>
+                </td>
+                <td>
+                    <a th:href="@{'/products/delete/' + ${product.id}}">Delete</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

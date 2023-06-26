@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.arg">
+<head>
+    <meta charset="UTF-8">
+    <title>List Brands</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/5.0.0/css/bootstrap.min.css}"/>
+</head>
+<body>
+<div class="container" align="center">
+    <div class="brand-list-header"><h1> Brand List</h1></div>
+    <p class="create-product-link-header"> <a href="/">Click to Return Menu</a> </p>
+    <div class="brand-list-table">
+        <table>
+            <thead class="table-header">
+            <tr>
+                <th align="center">ID</th>
+                <th align="center">Name</th>
+                <th align="center">Categories</th>
+                <th align="center">Edit</th>
+                <th align="center">Delete</th>
+            </tr>
+            </thead>
+            <tbody>
+            <th:block th:each="brand : ${listBrands}">
+                <tr>
+                    <td th:text="${brand.id}">ID</td>
+                    <td th:text="${brand.name}">Name</td>
+                    <td th:text="${brand.categories}">Categories</td>
+                    <td>
+                        <a th:href="@{'/brands/edit/'+${brand.id}}">Edit</a>
+                    </td>
+                    <td>
+                        <a th:href="@{'/brands/delete/'+${brand.id}}">Delete</a>
+                    </td>
+                </tr>
+            </th:block>
+            </tbody>
+        </table>
+    </div>
+</div>
+</body>
+</html>
+
+
+<style>
+    html,
+    body {
+        height: 100%;
+    }
+
+    h1, .brand-list-header {
+        color: #ffffff;
+    }
+
+    body {
+        margin: 0;
+        background: url('https://images.pexels.com/photos/3315286/pexels-photo-3315286.jpeg') no-repeat center center fixed;
+        background-size: cover;
+        font-family: sans-serif;
+        font-weight: 100;
+    }
+
+    .container {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    table {
+        width: 300px;
+        border: 1px dashed #ffffff;
+    }
+
+    th, td {
+        padding: 5px;
+        background-color: rgba(255, 255, 255, 0.5);
+        color: #000000;
+        text-align: center;
+        border: 1px dashed #000000;
+    }
+
+    th {
+        text-align: center;
+    }
+
+    .table-header {
+        background-color: #f3f3f3;
+    }
+
+    td.position: relative,
+    td:hover:before {
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: -9999px;
+        bottom: -9999px;
+        background-color: rgba(255, 255, 255, 0.2);
+        z-index: -1;
+    }
+
+    .create-product-link-header {
+        color: #b6a7a7;
+        font-size: 20px;
+    }
+
+    .brand-list-table {
+        border: 2px solid black;
+        padding: 10px;
+        background-color: rgba(255, 255, 255, 0.8);
+    }
+
+</style>
